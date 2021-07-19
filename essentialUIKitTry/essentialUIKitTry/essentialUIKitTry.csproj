@@ -64,6 +64,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.1.0.63" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.1.0.63" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.1.0.63" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
@@ -130,6 +131,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminClickedRedLockerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InsideALockerImage.xaml">

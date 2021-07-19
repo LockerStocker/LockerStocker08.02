@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="essentialUIKitTry.ChooseALocker"
-             xmlns:viewModel="clr-namespace:essentialUIKitTry.ViewModels">
+             xmlns:viewModel="clr-namespace:essentialUIKitTry.ViewModels" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
 
 
     <!--  Binding context for login page  
@@ -11,18 +11,25 @@
     </ContentPage.BindingContext> -->
     
     <StackLayout x:Name="ChooseALockerMainStack" >
-        <Label Text="Lockers" HorizontalOptions="Center" FontSize="40" FontFamily="Arial" />
+        <Label x:Name="name" HorizontalOptions="Center" FontSize="40" FontFamily="Arial" />
         <Label Text=" "/>
-        <Label Text="Please Choose Your Locker:" FontSize="25" FontFamily="Arial"  />
-        <Label Text=" "/>
+        <Label x:Name="balance" FontSize="20" FontFamily="Arial"/>
+        <Label x:Name="mid_title" FontSize="25" FontFamily="Arial"  />
+
+
+
 
         <StackLayout x:Name="ButtonsRow1" Orientation="Horizontal" HorizontalOptions="Center"/>
         <StackLayout x:Name="ButtonsRow2" Orientation="Horizontal" HorizontalOptions="Center"/>
         <StackLayout x:Name="ButtonsRow3" Orientation="Horizontal" HorizontalOptions="Center"/>
         <StackLayout x:Name="ButtonsRow4" Orientation="Horizontal" HorizontalOptions="Center"/>
 
+
+
+
         <Label Text=" "/>
         <Label x:Name="ModeInfoLbl" FontSize="18" FontFamily="Arial" HorizontalOptions="Center"  />
+        
 
 
 

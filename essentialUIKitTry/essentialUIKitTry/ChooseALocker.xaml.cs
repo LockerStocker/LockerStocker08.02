@@ -10,6 +10,7 @@ using CounterFunctions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microsoft.Identity.Client;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace essentialUIKitTry
 {
@@ -31,15 +32,73 @@ namespace essentialUIKitTry
         }
 
 
+        protected override void OnAppearing()
+        {
+            GetClaims();
+            base.OnAppearing();
+        }
+
+        private void GetClaims()
+        {
+            var token = authenticationResult.IdToken;
+            if (token != null)
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var data = handler.ReadJwtToken(authenticationResult.IdToken);
+                var claims = data.Claims.ToList();
+                App.m_myUserKey = data.Claims.FirstOrDefault(x => x.Type.Equals("email")).Value;
+                App.m_adminMode = data.Claims.FirstOrDefault(x => x.Type.Equals("surname")).Value == "ADMIN";
+
+                if (data != null)
+                {
+                    if (!App.m_adminMode)
+                    {
+                        this.name.Text = $"Hi {data.Claims.FirstOrDefault(x => x.Type.Equals("name")).Value}!";
+                        this.mid_title.Text = "Please Choose Your Locker:";
+                        this.balance.Text = $"You have { data.Claims.FirstOrDefault(x => x.Type.Equals("givenName")).Value} Shekels in your account.";
+                        //this.email.Text = $"email: {data.Claims.FirstOrDefault(x => x.Type.Equals("email")).Value}";
+                    }
+                    else
+                    {
+                        this.name.Text = $"Hi {data.Claims.FirstOrDefault(x => x.Type.Equals("name")).Value}!";
+                        this.mid_title.Text = "Here are all your lockers: ";
+                        
+                        //this.email.Text = $"email: {data.Claims.FirstOrDefault(x => x.Type.Equals("email")).Value}";
+                    }
+                    //this.name.Text = $"Welcome {data.Claims.FirstOrDefault(x => x.Type.Equals("displayName")).Value}";
+
+                }
+            }
+        }
+
+
+        async void SignOutBtn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            AuthenticationResult result;
+            try
+            {
+                result = await App.AuthenticationClient
+                    .AcquireTokenInteractive(Constants.Scopes)
+                    .WithPrompt(Prompt.ForceLogin)
+                    .WithParentActivityOrWindow(App.UIParent)
+                    .ExecuteAsync();
+
+                await Navigation.PushAsync(new ChooseALocker(result));
+            }
+            catch (MsalClientException)
+            {
+
+            }
+        }
         Button getBtnForLocker(Locker locker)
         {
-            int btnTimingFontSize=8;
+            int btnTimingFontSize = 8;
             int btnAvailableFontSize = 12;
             int btn_width = 60;
             int btn_height = 80;
             Button tmp_btn = new Button()
             {
-                Text = "L" + locker.Id, 
+                Text = "L" + locker.Id,
                 StyleId = "" + locker.Id,
                 WidthRequest = btn_width,
                 HeightRequest = btn_height,
@@ -48,8 +107,8 @@ namespace essentialUIKitTry
             if ((!locker.available) && (locker.user_key == App.m_myUserKey))
             {
                 tmp_btn.BackgroundColor = Color.LightSteelBlue;
-                tmp_btn.Padding = new Xamarin.Forms.Thickness(5,2);
-                tmp_btn.Text = "Time Remaining\n"+ AzureApi.GetRemainingTime(locker);
+                tmp_btn.Padding = new Xamarin.Forms.Thickness(5, 2);
+                tmp_btn.Text = "Time Remaining\n" + AzureApi.GetRemainingTime(locker);
                 tmp_btn.FontSize = btnTimingFontSize;
             }
             else if (locker.available)
@@ -62,8 +121,8 @@ namespace essentialUIKitTry
                 tmp_btn.BackgroundColor = Color.Red;
                 if (App.m_adminMode)
                 {
-                    tmp_btn.Padding = new Xamarin.Forms.Thickness(5,2);
-                    tmp_btn.Text = locker.user_key +"\n"+ AzureApi.GetRemainingTime(locker);
+                    tmp_btn.Padding = new Xamarin.Forms.Thickness(5, 2);
+                    tmp_btn.Text = locker.user_key + "\n" + AzureApi.GetRemainingTime(locker);
                     tmp_btn.FontSize = btnTimingFontSize;
                 }
             }
@@ -79,9 +138,9 @@ namespace essentialUIKitTry
             ButtonsRow3.Children.Clear();
             ButtonsRow4.Children.Clear();
             //ChooseALockerMainStack.Children.Clear();
-            
-            
-            for(int rowIdx = 0; rowIdx < numOfRows; rowIdx++)
+
+
+            for (int rowIdx = 0; rowIdx < numOfRows; rowIdx++)
             {
                 for (int lockerInRowIdx = 0; lockerInRowIdx < lockersInRow; lockerInRowIdx++)
                 {
@@ -89,7 +148,7 @@ namespace essentialUIKitTry
                     lockerRows[rowIdx].Add(tmpLocker);
                 }
             }
-            for(int idxInRow = 0; idxInRow < lockersInRow; idxInRow++)
+            for (int idxInRow = 0; idxInRow < lockersInRow; idxInRow++)
             {
                 Button btn1 = getBtnForLocker(lockerRows[0][idxInRow]);
                 Button btn2 = getBtnForLocker(lockerRows[1][idxInRow]);
@@ -123,20 +182,21 @@ namespace essentialUIKitTry
                     FontSize = btnFontSize,
                     WidthRequest = btn_width,
                     HeightRequest = btn_height,
-                    Padding = new Xamarin.Forms.Thickness(5,2)
+                    Padding = new Xamarin.Forms.Thickness(5, 2)
                 };
                 SetCostBtn.Clicked += NavigateToCostSelectionPage;
                 ChooseALockerMainStack.Children.Add(SetCostBtn);
             }
         }
 
-        async void NavigateToCostSelectionPage(object sender, System.EventArgs e) {
+        async void NavigateToCostSelectionPage(object sender, System.EventArgs e)
+        {
             await Navigation.PushAsync(new SetCostsMainPage());
         }
 
         async void Locker_ClickedAsync(object sender, System.EventArgs e)
         {
-            int locker_id= int.Parse((sender as Button).StyleId);
+            int locker_id = int.Parse((sender as Button).StyleId);
             var locker = await AzureApi.GetLocker(locker_id);
 
             if (locker.available)
@@ -144,13 +204,18 @@ namespace essentialUIKitTry
                 AzureApi.SetOccupy(locker_id, "userKey");
                 await Navigation.PushAsync(new Locker1OrderedSuccess(locker_id));
             }
-            else if (locker.user_key == App.m_myUserKey) 
+            else if (locker.user_key == App.m_myUserKey)
             {
                 await Navigation.PushAsync(new LockerProfilePage(locker_id));
             }
+
+            else if (!locker.available && App.m_adminMode)
+            {
+                await Navigation.PushAsync(new AdminClickedRedLockerPage(locker_id));
+            }
             else
             {
-                await Navigation.PushAsync(new Locker2OrderFailed(""+locker_id));  
+                await Navigation.PushAsync(new Locker2OrderFailed("" + locker_id));
             }
             SetLockerList();
         }

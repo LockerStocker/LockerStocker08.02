@@ -19,7 +19,9 @@ namespace essentialUIKitTry
 
         public static string ImageServerPath { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
         public static string m_myUserKey { get; set; } = "Tomer";
-        public static Boolean m_adminMode { get; set; } = true; //false;
+
+        public static string user_type { get; set; } = "";
+        public static Boolean m_adminMode { get; set; } = true; //false
         public App()
         {
             InitializeComponent();
