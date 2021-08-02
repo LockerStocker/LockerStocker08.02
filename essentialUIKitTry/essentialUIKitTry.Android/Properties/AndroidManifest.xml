@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.essentialuikittry" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="30" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="essentialUIKitTry.Android" android:theme="@style/MainTheme" android:usesCleartextTraffic="true">
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<application android:label="essentialUIKitTry.Android" android:theme="@style/MainTheme" android:usesCleartextTraffic="true" android:requestLegacyExternalStorage="true">
 		<activity android:name="microsoft.identity.client.BrowserTabActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />

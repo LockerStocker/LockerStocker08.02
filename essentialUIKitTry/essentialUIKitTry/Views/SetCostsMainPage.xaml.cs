@@ -3,6 +3,9 @@ using Xamarin.Forms.Xaml;
 using CounterFunctions;
 using Xamarin.Forms;
 using essentialUIKitTry;
+using static Android.App.VoiceInteractor;
+using Microsoft.Identity.Client;
+using Prompt = Microsoft.Identity.Client.Prompt;
 
 namespace essentialUIKitTry.Views
 {
@@ -42,12 +45,15 @@ namespace essentialUIKitTry.Views
             };
             setCostGloballyBtn.Clicked += HandleSetCostGloballyBtn;
 
+            
+
             MainStack.Children.Add(placeholderLbl);
             MainStack.Children.Add(setCostByLockerBtn);
             MainStack.Children.Add(setCostByRowBtn);
             MainStack.Children.Add(setCostGloballyBtn);
+            
         }
-        
+
         async void HandleSetCostByLockerBtn(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new SetCostsChooseALockerPage());
@@ -60,5 +66,24 @@ namespace essentialUIKitTry.Views
         {
             await Navigation.PushAsync(new SetCostsGloballyPage());
         }
+       // async void BackToLockers(object sender, System.EventArgs e)
+       // {
+         //   AuthenticationResult result;
+
+         //   try
+         //   {
+        //        result = await App.AuthenticationClient
+              //      .AcquireTokenInteractive(Constants.Scopes)
+                    //.WithPrompt(Prompt.ForceLogin)
+              //      .WithPrompt(Prompt.SelectAccount)
+                 //   .WithParentActivityOrWindow(App.UIParent)
+                  //  .ExecuteAsync();
+
+            //    await Navigation.PushAsync(new ChooseALocker(result));
+        //    }
+          //  catch (MsalClientException ex)
+        //    {
+        //    }
+      //  }
     }
 }

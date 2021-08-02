@@ -7796,11 +7796,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry.Android\\essentialUIKitTry.Android.csproj",
+      "projectUniqueName": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry.Android\\essentialUIKitTry.Android.csproj",
       "projectName": "essentialUIKitTry.Android",
-      "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry.Android\\essentialUIKitTry.Android.csproj",
+      "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry.Android\\essentialUIKitTry.Android.csproj",
       "packagesPath": "C:\\Users\\amirl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry.Android\\obj\\",
+      "outputPath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -7823,8 +7823,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj": {
-              "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj"
+            "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj": {
+              "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj"
             }
           }
         }

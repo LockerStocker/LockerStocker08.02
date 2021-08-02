@@ -154,18 +154,25 @@ namespace essentialUIKitTry
             var lockersPicturesPath = Path.Combine(externalStorage, "Pictures//LockerStocker");
             var imagePath = Path.Combine(lockersPicturesPath, "LockerStocker_" + id + ".jpeg");
 
+
             bool exists = System.IO.Directory.Exists(lockersPicturesPath);
-            if (!exists)
+            if (!exists) 
                 System.IO.Directory.CreateDirectory(lockersPicturesPath);
 
-            using (Stream file = File.Create(imagePath))
+
+           // FileStream file = new FileStream(imagePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+
+            using (FileStream file = new FileStream(imagePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
             {
                 blobClient.DownloadTo(file);
+                file.Close();
             }
 
 
             BlobClient blobClientUpload = containerClient.GetBlobClient("LockerStocker_" + id + ".jpeg");
-            FileStream upFileStream = File.OpenRead(imagePath);
+            //FileStream upFileStream = new FileStream(imagePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+            FileStream upFileStream = new FileStream(imagePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+            //upFileStream = File.OpenRead(imagePath);
             await blobClientUpload.UploadAsync(upFileStream, true);
             upFileStream.Close();
         }

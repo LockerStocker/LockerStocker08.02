@@ -10136,11 +10136,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry.iOS\\essentialUIKitTry.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry.iOS\\essentialUIKitTry.iOS.csproj",
       "projectName": "essentialUIKitTry.iOS",
-      "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry.iOS\\essentialUIKitTry.iOS.csproj",
+      "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry.iOS\\essentialUIKitTry.iOS.csproj",
       "packagesPath": "C:\\Users\\amirl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry.iOS\\obj\\",
+      "outputPath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -10163,8 +10163,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj": {
-              "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj"
+            "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj": {
+              "projectPath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj"
             }
           }
         }

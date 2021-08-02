@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8P5czfMl42CluRPKSmDEIQ5TAxLoqwZoZP8HrJn8wKn4++qUyz/Tzg4awxnzqGoiOVb1Rd/3futL6kVdg9uSjw==",
+  "dgSpecHash": "9OpYv6+pGpi79Ze+BOGTp6Kz5MFZ5nuImzBYFBSYgBh4B+52qwBgRi3B+0Fv3WljW8IH2Gd50yKAPyXcGxadTg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\amirl\\Source\\Repos\\GitTommerLockerStocker18.07\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj",
+  "projectFilePath": "C:\\Users\\amirl\\Source\\Repos\\GitAmir20.07LockerStocker\\essentialUIKitTry\\essentialUIKitTry\\essentialUIKitTry.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\amirl\\.nuget\\packages\\azure.core\\1.15.0\\azure.core.1.15.0.nupkg.sha512",
     "C:\\Users\\amirl\\.nuget\\packages\\azure.storage.blobs\\12.9.1\\azure.storage.blobs.12.9.1.nupkg.sha512",
